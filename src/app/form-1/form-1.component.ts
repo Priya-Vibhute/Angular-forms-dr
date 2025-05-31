@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-form-1',
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './form-1.component.html',
   styleUrl: './form-1.component.css'
 })
 export class Form1Component {
 
-  onSubmit(form:NgForm)
+  @ViewChild('myForm') form!:NgForm;
+
+  onSubmit()
   {
-    console.log(form);
+    console.log(this.form);
     
   }
 

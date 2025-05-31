@@ -4,12 +4,21 @@
 
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" ngModel required #email="ngModel" email>
 
+<div *ngIf="email.invalid && (email.dirty || email.touched)">
 
+     <div id="emailHelp" class="form-text text-danger"
+     *ngIf="email.errors?.['required']">
+        Email is required
+    </div>
 
     <div id="emailHelp" class="form-text text-danger"
-    *ngIf="email.invalid && (email.dirty || email.touched)">
+    *ngIf="email.errors?.['email']">
         Email is invalid
     </div>
+
+</div>
+
+   
 
 
 
@@ -18,9 +27,8 @@
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1"
-    name="password" ngModel required #password="ngModel">
+    name="password" ngModel required #password="ngModel" minlength="6">
   </div>
   
-  <button type="submit" class="btn btn-primary" 
-  [disabled]="myForm.invalid">Submit</button>
+  <button type="submit" class="btn btn-primary" >Submit</button>
 </form>

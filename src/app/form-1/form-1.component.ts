@@ -14,8 +14,18 @@ export class Form1Component {
 
   onSubmit()
   {
-    console.log(this.form);
+    // console.log(this.form);
+    console.log(this.form.value);
+    this.form.reset()
     
+  }
+
+  fillValues()
+  {
+    this.form.setValue({
+      email:"priyanka.vibhute@itvedant.com",
+      password:"XYZ@1234"
+    })
   }
 
 }

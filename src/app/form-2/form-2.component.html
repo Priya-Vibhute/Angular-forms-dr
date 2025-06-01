@@ -3,9 +3,19 @@
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
-    <div >
+    <div *ngIf="reactiveForm.get('email')?.invalid && 
+    
+    (reactiveForm.get('email')?.dirty || reactiveForm.get('email')?.touched)">
 
-        <div id="emailHelp" class="form-text"></div>
+      <div id="emailHelp" class="form-text text-danger" 
+        *ngIf="reactiveForm.get('email')?.hasError('required')">
+              Email Address is required
+       </div>
+
+        <div id="emailHelp" class="form-text text-danger" 
+        *ngIf="reactiveForm.get('email')?.hasError('email')">
+              Email Address is invalid
+       </div>
 
     </div>
     
@@ -14,6 +24,23 @@
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
   </div>
+
+ <div *ngIf="reactiveForm.get('password')?.invalid && 
+    
+    (reactiveForm.get('password')?.dirty || reactiveForm.get('password')?.touched)">
+
+        <div id="emailHelp" class="form-text text-danger" *ngIf="reactiveForm.get('password')?.hasError('required')">
+          Password is required
+        </div>
+
+
+         <div id="emailHelp" class="form-text text-danger" *ngIf="reactiveForm.get('password')?.hasError('minlength')">
+          Password is too short
+        </div>
+
+    </div>
+
+
   <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
